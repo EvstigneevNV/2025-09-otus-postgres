@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  pg-region1:
+    image: postgres:16
+    container_name: pg-region1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shipments_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./configs/postgres-region1.conf:/etc/postgresql/postgresql.conf
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+
+  pg-region2:
+    image: postgres:16
+    container_name: pg-region2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shipments_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./configs/postgres-region2.conf:/etc/postgresql/postgresql.conf
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+
+  haproxy:
+    image: haproxy:2.9
+    container_name: geo-haproxy
+    ports:
+      - "5000:5000"
+      - "8404:8404"
+    volumes:
+      - ./configs/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    depends_on:
+      - pg-region1
+      - pg-region2

@@ -1,0 +1,15 @@
+[INFO] Latency benchmark started
+
+[QUERY] SELECT count(*) FROM shipments;
+region-1: 118 ms
+region-2: 341 ms
+
+[QUERY] SELECT count(*) FROM shipments WHERE destination = 'Berlin' AND created_at >= '2026-03-01' AND created_at < '2026-04-01';
+region-1: 154 ms
+region-2: 402 ms
+
+[QUERY] SELECT region, destination, SUM(quantity) FROM shipments GROUP BY region, destination ORDER BY SUM(quantity) DESC;
+region-1: 930 ms
+region-2: 1820 ms
+
+[INFO] Benchmark finished

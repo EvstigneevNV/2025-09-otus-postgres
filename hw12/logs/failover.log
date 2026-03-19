@@ -1,0 +1,16 @@
+[INFO] Failover test started
+[INFO] Active write node: pg-region1
+[INFO] Simulating node failure...
+docker stop pg-region1
+
+[WARN] pg-region1 is unavailable
+[INFO] HAProxy primary backend is down
+[INFO] Read requests redirected to pg-region2
+[INFO] Write requests require manual reroute / promotion
+[INFO] Client read query still available through replica
+[INFO] Failover scenario completed
+
+Result:
+- read availability: OK
+- write availability without promotion: DEGRADED
+- data loss detected: NO

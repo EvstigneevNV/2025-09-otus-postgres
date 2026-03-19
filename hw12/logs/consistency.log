@@ -1,0 +1,6 @@
+[INFO] Consistency check started
+[INFO] region-1 row count: 20000000
+[INFO] region-2 row count: 20000000
+[INFO] region-1 checksum sample: 9d4f6d7ab2f39d0db6d0d69dbd7b6a11
+[INFO] region-2 checksum sample: 9d4f6d7ab2f39d0db6d0d69dbd7b6a11
+[SUCCESS] Consistency check passed

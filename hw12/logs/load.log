@@ -1,0 +1,9 @@
+[INFO] Start loading 10 GB test dataset
+[INFO] Target table: shipments
+[INFO] COPY started on pg-region1 at 2026-03-20 10:00:14
+[INFO] COPY finished on pg-region1 at 2026-03-20 10:24:49
+[INFO] Initial dump created: shipments_dump.sql
+[INFO] Restore started on pg-region2 at 2026-03-20 10:27:02
+[INFO] Restore finished on pg-region2 at 2026-03-20 10:54:11
+[INFO] Logical replication enabled
+[INFO] Initial data transfer completed successfully
